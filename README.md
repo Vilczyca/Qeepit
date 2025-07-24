@@ -1,5 +1,5 @@
 # Qeepit  
-**A full-stack inventory management platform built in 48 hours** 
+**A full-stack inventory management platform built in 48 hours.** 
 Manage resources of any kind with secure user authentication.
 
 ## 🧠 Project Overview  
@@ -14,7 +14,7 @@ Manage resources of any kind with secure user authentication.
 
 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/qeepit.git
+git clone https://github.com/Vilczyca/qeepit.git
 ```
 
 2. Setup each part separately:

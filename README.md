@@ -13,9 +13,9 @@ Manage resources of any kind with secure user authentication.
 ## How to use?
 
 1. Clone the repository
-```bash
-git clone https://github.com/Vilczyca/qeepit.git
-```
+    ```bash
+    git clone https://github.com/Vilczyca/qeepit.git
+    ```
 
 2. Setup each part separately:
 - Navigate to /frontend/ and follow its README.md

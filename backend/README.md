@@ -21,6 +21,6 @@
 | Install dependencies      | `pip3 install -r requirements.txt`     | `pip install -r requirements.txt`   |
 
 5. Run the app
-```bash
-uvicorn main:app --reload
-```
+   ```bash
+   uvicorn main:app --reload
+   ```

@@ -21,5 +21,7 @@
 
 5. Run the app:
    ```bash
-   npm start
+    npx expo start -c
    ```
+**Note:** The -c flag clears the Metro bundler cache when starting
+

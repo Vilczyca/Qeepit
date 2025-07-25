@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useLogin } from "../../contexts/LoginContext";
+import { useLogin } from '@shared/contexts/LoginContext';
 import axios from "axios";
 import "../../styles/forms.css";
 

@@ -7,7 +7,6 @@ const AddItemForm = ({ onAdd, onCancel }) => {
     description: '',
     category: 'Electronics',
     quantity: 0,
-    status: 'Available'
   })
 
   const handleChange = (e) => {
@@ -78,19 +77,6 @@ const AddItemForm = ({ onAdd, onCancel }) => {
                 required
               />
             </div>
-          </div>
-
-          <div className="form-group">
-            <label>Status</label>
-            <select
-              name="status"
-              value={formData.status}
-              onChange={handleChange}
-            >
-              <option value="Available">Available</option>
-              <option value="Low Stock">Low Stock</option>
-              <option value="Out of Stock">Out of Stock</option>
-            </select>
           </div>
 
           <div className="form-actions">

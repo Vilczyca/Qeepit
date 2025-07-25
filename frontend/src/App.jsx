@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './routes/Login';
 import Home from './routes/Home';
-import { LoginProvider, useLogin } from './contexts/LoginContext';
+import { LoginProvider, useLogin } from '@shared/contexts/LoginContext';
+import { setApiUrl } from '@shared/config/apiConfig';
+import { setTokenGetter } from '@shared/api/api';
 
 function AppRoutes() {
   const { isAuthenticated } = useLogin();
@@ -21,7 +23,10 @@ function AppRoutes() {
 }
 
 export default function App() {
-  return (
+    setApiUrl(import.meta.env.VITE_BACKEND_URL);
+    setTokenGetter(() => localStorage.getItem('token'));
+
+    return (
     <LoginProvider>
       <BrowserRouter>
         <AppRoutes />

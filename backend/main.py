@@ -14,18 +14,19 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["*"],    # only for DEV!
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-app.include_router(auth.router, prefix="/auth", tags=["auth"])
-app.include_router(resources.router, prefix="/resources")
-
 @app.get("/")
 def read_root():
     return {"message": "Welcome to Qeepit!"}
+
+@app.get("/healthcheck")
+def healthcheck():
+    return {"status": "OK"}
 
 @app.on_event("startup")
 def startup_event():
@@ -37,3 +38,6 @@ def startup_event():
         print("✅ Database connection successful")
     except Exception as e:
         print("❌ Database connection error:", e)
+
+app.include_router(auth.router, prefix="/auth", tags=["auth"])
+app.include_router(resources.router, prefix="/resources",  tags=["resurces"])

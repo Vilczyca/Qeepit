@@ -2,7 +2,9 @@
 **A full-stack inventory management platform built in 48 hours.** 
 Manage resources of any kind with secure user authentication.
 
-## 🧠 Project Overview  
+⚠️ Note: Qeepit was built under time constraints. It’s not perfect, but functional. Future improvements are planned.  For the latest stable version, check the `fixed` branch.
+
+## Project Overview  
 **Qeepit** is a cross-platform inventory management system designed for speed, scalability, and simplicity. It enables users to view, create, edit, and delete resources across web and ~~mobile~~ (TODO) interfaces.
 
 ## Features
@@ -23,4 +25,3 @@ Manage resources of any kind with secure user authentication.
 
 3. Have fun :)
 
-⚠️ Note: Qeepit was built under time constraints. It’s not perfect, but functional. Future improvements are planned.

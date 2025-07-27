@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useLogin } from '@shared/contexts/LoginContext'
 import { fetchItems, addItem, updateItem, deleteItem } from '@shared/api/resources'
-import ItemCard from '../components/items/ItemCard'
 import Table from '../components/items/Table'
 import AddItemForm from '../components/forms/AddItemForm'
 import EditItemForm from '../components/forms/EditItemForm'
@@ -61,7 +60,7 @@ export default function Home() {
     return (
         <div className="home-container">
             <header className="page-header">
-                <h1>Inventory</h1>
+                <h1 style={{color: '#333'}}>Inventory</h1>
                 <button
                     className="logout-button"
                     onClick={logout}
@@ -77,24 +76,11 @@ export default function Home() {
                 + Add Item
             </button>
 
-            <div className="items-grid" style={{ display: 'none' }}>
-                {items.map(item => (
-                    <ItemCard
-                        key={item.id}
-                        item={item}
-                        onEdit={() => setEditingItem(item)}
-                        onDelete={() => handleDelete(item.id)}
-                    />
-                ))}
-            </div>
-
-            <div className="table-view">
-                <Table
-                    items={items}
-                    onEdit={setEditingItem}
-                    onDelete={handleDelete}
-                />
-            </div>
+            <Table
+                items={items}
+                onEdit={setEditingItem}
+                onDelete={handleDelete}
+            />
 
             {showAddForm && (
                 <AddItemForm
@@ -112,4 +98,5 @@ export default function Home() {
             )}
         </div>
     )
+
 }

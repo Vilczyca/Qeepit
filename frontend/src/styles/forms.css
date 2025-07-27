@@ -1,64 +1,242 @@
+@import '../App.css';
+
+/* Reset and deafult styles */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* LOGIN PAGE */
+.login-page {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
 .login-container {
+  background-color: white;
   max-width: 400px;
-  margin: 2rem auto;
+  width: 100%;
   padding: 2rem;
-  border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.login-container h2 {
+/* MODALS (Add/Edit Item) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* SHARED */
+
+.login-container h2,
+.modal-content h2 {
   text-align: center;
   margin-bottom: 1.5rem;
   color: #333;
+  font-size: 1.8rem;
+  position: relative;
+  padding-bottom: 0.5rem;
 }
 
 .form-group {
   margin-bottom: 1.5rem;
+  position: relative;
 }
 
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
 }
 
-.form-group input {
+.form-group input,
+.form-group select,
+.form-group textarea {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.75rem 1rem;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 1rem;
+  background-color: white;
+  color: #333;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.form-group input.error {
-  border-color: #ff4444;
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #666;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #999;
+  opacity: 1;
+  font-weight: 400;
+}
+
+.form-group textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+/* Buttons */
+.button-group,
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.button-group {
+  flex-direction: column;
+}
+
+.sign-in-button,
+.create-account-button,
+.primary-btn,
+.cancel-btn,
+button[type="submit"].primary {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.sign-in-button,
+.primary-btn,
+button[type="submit"].primary {
+  background-color: #000;
+  color: white;
+}
+
+.create-account-button,
+.cancel-btn,
+button[type="button"] {
+  background-color: #808080;
+  color: white;
+}
+
+.sign-in-button:hover:not(:disabled),
+.create-account-button:hover:not(:disabled),
+.primary-btn:hover:not(:disabled),
+.cancel-btn:hover:not(:disabled),
+button[type="submit"].primary:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.sign-in-button:disabled,
+.create-account-button:disabled,
+.primary-btn:disabled,
+.cancel-btn:disabled,
+button[type="submit"].primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+
+/* Messages */
+.form-group input.input-error,
+.form-group select.input-error,
+.form-group textarea.input-error {
+  border-color: var(--red);
 }
 
 .error-message {
-  color: #ff4444;
+  color: var(--red);
   font-size: 0.875rem;
   margin-top: 0.25rem;
-  display: block;
 }
 
-button {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.form-error {
+  margin-bottom: 1rem;
 }
 
-button:hover {
-  background-color: #45a049;
+.info-message {
+  color: var(--green);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
 }
 
-button:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
+
+@media (max-width: 768px) {
+  .login-container,
+  .modal-content {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .button-group,
+  .form-actions {
+    flex-direction: column;
+  }
+}
+
+/* Dark theme fix */
+@media (prefers-color-scheme: dark) {
+  .login-page {
+    background-color: #f5f5f5 !important;
+  }
+
+  .login-container,
+  .modal-content {
+    background: white !important;
+    color: #333 !important;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: white !important;
+    color: #333 !important;
+  }
+
+  .form-group label {
+    color: #333 !important;
+  }
 }

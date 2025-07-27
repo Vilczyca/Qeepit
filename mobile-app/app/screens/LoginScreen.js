@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Text, StyleSheet } from 'react-native';
+import { View, TextInput, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { loginUser, registerUser } from '@shared/api/auth';
 import { useLogin } from '@shared/contexts/LoginContext';
 
@@ -53,9 +53,11 @@ export default function LoginScreen({ navigation }) {
         <View style={styles.container}>
             <Text style={styles.title}>Sign In</Text>
 
+            <Text>Email</Text>
             <TextInput
                 style={styles.input}
-                placeholder="Email"
+                placeholder="Enter your email"
+                placeholderTextColor="#999"
                 autoCapitalize="none"
                 keyboardType="email-address"
                 value={formData.email}
@@ -63,9 +65,11 @@ export default function LoginScreen({ navigation }) {
             />
             {errors.email && <Text style={styles.error}>{errors.email}</Text>}
 
+            <Text>Password</Text>
             <TextInput
                 style={styles.input}
-                placeholder="Password"
+                placeholder="Enter your password"
+                placeholderTextColor="#999"
                 secureTextEntry
                 value={formData.password}
                 onChangeText={(text) => handleChange('password', text)}
@@ -76,29 +80,77 @@ export default function LoginScreen({ navigation }) {
             {infoMessage && <Text style={styles.info}>{infoMessage}</Text>}
 
             <View style={styles.buttonGroup}>
-                <Button
-                    title={loading ? 'Signing in...' : 'Sign In'}
+                <TouchableOpacity
+                    style={[styles.button, styles.signInButton]}
                     onPress={() => handleAuth('login')}
                     disabled={loading}
-                />
-                <Button
-                    title={loading ? 'Creating...' : 'Create Account'}
+                >
+                    <Text style={styles.buttonText}>
+                        {loading ? 'Signing in...' : 'Sign In'}
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={[styles.button, styles.createAccountButton]}
                     onPress={() => handleAuth('register')}
                     disabled={loading}
-                />
+                >
+                    <Text style={styles.buttonText}>
+                        {loading ? 'Creating...' : 'Create Account'}
+                    </Text>
+                </TouchableOpacity>
             </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    container: { padding: 20, flex: 1, justifyContent: 'center' },
-    title: { fontSize: 24, marginBottom: 20, textAlign: 'center' },
-    input: {
-        borderWidth: 1, borderColor: '#ccc', padding: 10, marginBottom: 10,
-        borderRadius: 5,
+    container: {
+        padding: 20,
+        flex: 1,
+        justifyContent: 'center',
     },
-    error: { color: 'red', marginBottom: 10 },
-    info: { color: 'green', marginBottom: 10 },
-    buttonGroup: { gap: 10, marginTop: 10 },
+    title: {
+        fontSize: 24,
+        marginBottom: 20,
+        textAlign: 'center',
+        color: '#333',
+    },
+    input: {
+        borderWidth: 1,
+        borderColor: '#ccc',
+        padding: 15,
+        marginBottom: 10,
+        borderRadius: 5,
+        backgroundColor: 'white',
+        color: '#333',
+    },
+    error: {
+        color: 'red',
+        marginBottom: 10,
+    },
+    info: {
+        color: 'green',
+        marginBottom: 10,
+    },
+    buttonGroup: {
+        gap: 10,
+        marginTop: 10,
+    },
+    button: {
+        padding: 15,
+        borderRadius: 25,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    signInButton: {
+        backgroundColor: 'black',
+    },
+    createAccountButton: {
+        backgroundColor: 'gray',
+    },
+    buttonText: {
+        color: 'white',
+        fontWeight: 'bold',
+    },
 });

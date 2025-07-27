@@ -1,4 +1,4 @@
-import "../../styles/card.css";
+import "../../styles/table.css";
 
 const Table = ({ items, onEdit, onDelete }) => {
   return (
@@ -11,7 +11,6 @@ const Table = ({ items, onEdit, onDelete }) => {
             <th>Quantity</th>
             <th>Status</th>
             <th>Date Added</th>
-            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -47,8 +46,22 @@ const Table = ({ items, onEdit, onDelete }) => {
               </td>
               <td>{new Date(item.dateAdded).toLocaleDateString()}</td>
               <td className="actions">
-                <button onClick={() => onEdit(item)}>Edit</button>
-                <button className="danger" onClick={() => onDelete(item.id)}>Delete</button>
+                <div className="actions-buttons">
+                  <button
+                      className="action-btn edit-btn"
+                      onClick={() => onEdit(item)}
+                      title="Edit"
+                  >
+                    <span className="action-icon">✏️</span>
+                  </button>
+                  <button
+                      className="action-btn delete-btn"
+                      onClick={() => onDelete(item.id)}
+                      title="Delete"
+                  >
+                    <span className="action-icon">🗑️</span>
+                  </button>
+                </div>
               </td>
             </tr>
           ))

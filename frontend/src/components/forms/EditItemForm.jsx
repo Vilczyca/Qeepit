@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-// import "../../styles/forms.css";
+import "../../styles/forms.css";
 
 const EditItemForm = ({ item, onSave, onCancel }) => {
   const [formData, setFormData] = useState(item)
@@ -78,8 +78,8 @@ const EditItemForm = ({ item, onSave, onCancel }) => {
           </div>
 
           <div className="form-actions">
-            <button type="button" onClick={onCancel}>Cancel</button>
-            <button type="submit" className="primary">Save Changes</button>
+            <button type="button"  className="cancel-btn"  onClick={onCancel}>Cancel</button>
+            <button type="submit" className="primary-btn">Save Changes</button>
           </div>
         </form>
       </div>

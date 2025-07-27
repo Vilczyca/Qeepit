@@ -1,8 +1,9 @@
 # Qeepit  
-**A full-stack inventory management platform built in 48 hours.** 
-Manage resources of any kind with secure user authentication.
+**A full-stack inventory management platform..** Manage resources of any kind with secure user authentication.
 
-## 🧠 Project Overview  
+Originally built in 48 hours. This branch represents the latest enhanced version with improved features.
+
+## Project Overview  
 **Qeepit** is a cross-platform inventory management system designed for speed, scalability, and simplicity. It enables users to view, create, edit, and delete resources across web and ~~mobile~~ (TODO) interfaces.
 
 ## Features
@@ -10,16 +11,33 @@ Manage resources of any kind with secure user authentication.
 - ✏️ Add, edit, and remove items
 - 🛡️ Secure authentication
 
+
+## Project Status
+
+| Feature              | Status        | Notes                                    |
+|----------------------|---------------|------------------------------------------|
+| User Authentication  | ✅ Completed   | Token-based (JWT) authentication         |
+| Inventory CRUD (Web) | ✅ Completed   | Fully functional UI with API integration |
+| UI/UX                | 🔄 Partial     | Final polish and improvements needed     |
+| Mobile Support       | ⌛ In Progress | React Native app in development          |
+
+
+
 ## How to use?
 
-1. Clone the repository
+1. Clone the repository with this branch...
     ```bash
-    git clone https://github.com/Vilczyca/qeepit.git
+    git clone -b fixed https://github.com/Vilczyca/qeepit.git
     ```
+   ...or change branch if you already have it
+   ```bash
+   git fetch
+   git checkout fixed
+   ```
 
 2. Setup each part separately:
-- Navigate to /frontend/ and follow its README.md
-- Navigate to /backend/ and follow its README.md
+- Navigate to `/frontend/` and follow its `README.md`
+- Navigate to `/backend/` and follow its `README.md`
 
 3. Have fun :)
 
